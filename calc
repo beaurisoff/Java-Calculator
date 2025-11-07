@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите операцию:");
+        String input = sc.nextLine();
+        System.out.println("Результат: " + calc(input));
+        sc.close();
+    }
+
+    public static String calc(String input) throws Exception {
+        input = input.trim();
+        String[] parts = input.split(" ");
+        if (parts.length != 3)
+            throw new Exception("throws Exception");
+
+        int a, b;
+        String operator = parts[1];
+
+        try {
+            a = Integer.parseInt(parts[0]);
+            b = Integer.parseInt(parts[2]);
+        } catch (NumberFormatException e) {
+            throw new Exception("throws Exception");
+        }
+
+        if (a < 1 || a > 10 || b < 1 || b > 10) {
+            throw new Exception("Только числа от 1 до 10");
+        }
+        int result;
+
+        switch (operator) {
+            case "+":
+                result = a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "/":
+                if (b == 0)
+                    throw new Exception("throws Exception");
+                result = a / b;
+                break;
+            default:
+                throw new Exception("throws Exception");
+        }
+
+        return String.valueOf(result);
+    }
+}
