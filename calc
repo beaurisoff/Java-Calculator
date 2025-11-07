@@ -44,8 +44,6 @@ public class Main {
                 result = a * b;
                 break;
             case "/":
-                if (b == 0)
-                    throw new Exception("throws Exception");
                 result = a / b;
                 break;
             default:
